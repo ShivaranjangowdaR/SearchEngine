@@ -6,5 +6,4 @@ public class InvalidRootFinderException extends Exception {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 }

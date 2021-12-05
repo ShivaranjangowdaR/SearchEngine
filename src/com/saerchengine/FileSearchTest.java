@@ -19,12 +19,12 @@ class FileSearchTest {
 		try {
 			List<String> drives;
 			drives = test.detectDrives();
-			String file=test.getFileName();
+			String file = test.getFileName();
 			ISearchManager searchManger1 = SearchManagerFactory.create();
-			List<String> actual= searchManger1.search(file, drives);
-			List<String>excpect = new ArrayList<String>();;
+			List<String> actual = searchManger1.search(file, drives);
+			List<String> excpect = new ArrayList<String>();
 			excpect.add("C:\\New folder\\New.txt");
-			assertEquals(excpect,actual);
+			assertEquals(excpect, actual);
 		} catch (InvalidRootFinderException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

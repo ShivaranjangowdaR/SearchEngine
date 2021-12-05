@@ -6,8 +6,9 @@ import com.saerchengine.exception.InvalidRootFinderException;
 
 public class SearchJDBCFactory {
 	static Logger log = Logger.getLogger(SearchJDBCFactory.class);
+
 	public static ISearchManager create() throws InvalidRootFinderException {
-		return  new SearchinJDBC();
+		return new SearchinJDBC();
 	}
-	
+
 }

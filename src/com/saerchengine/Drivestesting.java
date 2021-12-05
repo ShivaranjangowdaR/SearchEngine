@@ -1,7 +1,5 @@
 package com.saerchengine;
 
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -17,16 +15,16 @@ class Drivestesting {
 	void test() {
 		TestMain test = new TestMain();
 		try {
-			List<String> actual=test.detectDrives();
-			List<String>excepted=new ArrayList<String>();
+			List<String> actual = test.detectDrives();
+			List<String> excepted = new ArrayList<String>();
 			excepted.add("C:\\");
 			excepted.add("D:\\");
-			assertEquals(excepted,actual);
+			assertEquals(excepted, actual);
 		} catch (InvalidRootFinderException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		}
+
+	}
 
 }

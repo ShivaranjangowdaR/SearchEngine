@@ -10,14 +10,13 @@ public class ActiveRootFinder implements IRootFinder {
 	public List<String> detectDrives() {
 		// TODO Auto-generated method stub
 		File[] roots = File.listRoots();
-		List<String>drives = new ArrayList<>();
-		
-		for(File root: roots) {
-			if(root.canRead()) 
+		List<String> drives = new ArrayList<>();
+
+		for (File root : roots) {
+			if (root.canRead())
 				drives.add(root.getAbsolutePath());
-			}
+		}
 		return drives;
 	}
-	
 
 }
