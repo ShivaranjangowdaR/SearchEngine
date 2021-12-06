@@ -34,7 +34,7 @@ public class TestMain {
 		} else if (choice == 2) {
 			login.login();
 		}
-		log.info("Search Engine Project Started");
+		String filename = getFileName();
 		List<String> drives = null;
 		try {
 			drives = detectDrives();
@@ -49,7 +49,7 @@ public class TestMain {
 		log.info("Drives are Detecting....");
 		showDrives(drives);
 
-		String filename = getFileName();
+		
 
 		ISearchManager searchManger;
 		try {
@@ -58,23 +58,22 @@ public class TestMain {
 			List<String> pathFound = searchManger.search(filename, drives);
 			String paths = showpaths(pathFound);
 			if (paths == null) {
-				log.error("Files not found in Dtatbase");
 				log.info("Searching file in Device");
 				searchManger = SearchManagerFactory.create();
 				List<String> pathFound1 = searchManger.search(filename, drives);
 				String paths1 = showpaths(pathFound1);
-				ISearchHistoryRepository repository = new SearchHistoryJDBCRepository();
 				try {
+					ISearchHistoryRepository repository = new SearchHistoryJDBCRepository();
 					repository.storeSearchResult(filename, drives, pathFound1);
 					if (paths1 == null) {
 						log.error("path not found in Device");
 					} else {
 						log.error("path found in Device ");
-						System.out.println(paths);
+						System.out.println(paths1);
 					}
 
 				} catch (UnableToExececuteException e) { // TODO Auto-generated catch block
-					e.printStackTrace();
+				 	e.printStackTrace();
 				}
 			} else {
 				log.info("path found in Database ");
@@ -93,8 +92,7 @@ public class TestMain {
 		};
 		mylambda.process();
 
-		System.out.println(
-				"===========================================================================================================");
+		System.out.println("===========================================================================================================");
 
 		Logout logout = new Logout();
 		logout.logout();
@@ -116,7 +114,7 @@ public class TestMain {
 		// TODO Auto-generated method stub
 
 		String filename = null;
-		System.out.println("enter the file name ");
+		System.out.println("Enter the file name to serach ");
 		filename = sc.next();
 		return filename;
 	}
@@ -133,7 +131,7 @@ public class TestMain {
 
 		List<String> drives = new ArrayList<String>();
 
-		System.out.println("Enter  choice 1 for see all drives in system or Enter choice 2 see active drives");
+		System.out.println("Enter  choice 1 for search in all drives in system or Enter choice 2 for serach inn active drives");
 
 		int choice = sc.nextInt();
 		IRootFinder finder = null;

@@ -18,7 +18,7 @@ public class DeleteHistory {
 
 		try {
 			Statement st = connection.createStatement();
-			String query = "delete from fileinformation1 where fileName='"+filename+"'";
+			String query = "delete from fileinformation1 where Filename='"+filename+"'";
 			int rs=st.executeUpdate(query);
 			if (rs!=0) {
 				

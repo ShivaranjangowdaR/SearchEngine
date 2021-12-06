@@ -19,16 +19,9 @@ public class SearchHistoryJDBCRepository implements ISearchHistoryRepository {
 		connection = ConnectionFactory.create();
 		try {
 			Statement smt = connection.createStatement();
-			String q = "Select Count(*) from fileinformation where fileName ='" + fileName + "' and pathsFound='"
-					+ pathsFound + "'";
-			ResultSet res = smt.executeQuery(q);
-			if (res.next()) {
-				System.out.println("File already saved");
-			} else {
-				String query = "insert into fileinformation values ('" + fileName + "','" + drives + "','" + pathsFound
+			String query = "insert into fileinformation values ('" + fileName + "','" + drives + "','" + pathsFound
 						+ "')";
-				isStored = smt.execute(query);
-			}
+				isStored = smt.execute(query);	
 
 		} catch (SQLException e) {
 			throw new UnableToExececuteException();

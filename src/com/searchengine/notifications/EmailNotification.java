@@ -1,6 +1,10 @@
 package com.searchengine.notifications;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -49,8 +53,9 @@ public class EmailNotification {
 	}
 
 	// Start our mail message
-	private static Message prepareMessage(Session session, String username, String recepient, String User,
-			String Password) {
+	private static Message prepareMessage(Session session, String username, String recepient, String User,String Password) throws SQLException {
+		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+		 LocalDateTime now = LocalDateTime.now();  
 		Connection connection = null;
 		connection = ConnectionFactory.create();
 		try {
@@ -61,6 +66,10 @@ public class EmailNotification {
 			message.setText(
 					"WELCOME TO SEARCH ENGINE " + "\n" + "\n" + "For your reference here is your login information"
 							+ "\n" + "UserName" + ":" + User + "\n" + "Password" + ":" + Password);
+			Statement smt = connection.createStatement();
+			String query = "insert into Email_Notifiction values ('" + User + "','" + Password + "')";
+			smt.execute(query);
+			connection.close();
 			return message;
 
 		} catch (AddressException e) {

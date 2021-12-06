@@ -27,7 +27,7 @@ public class Lastsearch implements MostFrequentSearch {
 			if (rs != null) {
 				while (rs.next()) {
 
-					System.out.println(rs.getString("fileName") + " : " + rs.getString("pathsFound"));
+					System.out.println(rs.getString("Filename") + " : " + rs.getString("Path"));
 				}
 
 			} else {
